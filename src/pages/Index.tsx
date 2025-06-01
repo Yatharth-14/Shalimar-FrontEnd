@@ -11,15 +11,57 @@ import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { PopupBanner } from "@/components/PopupBanner";
 import { Building2, MapPin, Users, Star, Dumbbell, Car, Shield, Waves, TreePine, Building, Phone, Mail, Calendar, Award, Download } from "lucide-react";
+import {useToast} from "@/hooks/use-toast.ts";
 
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
+    Name: "",
+    Email: "",
+    Phone: "",
+    Message: ""
+  });
+  const [errors, setErrors] = useState({
     name: "",
     email: "",
     phone: "",
-    message: ""
+    message: "",
   });
+  const validateForm = () => {
+    let isValid = true;
+    const newErrors = { name: "", email: "", phone: "", message: "" };
+
+    if (!formData.Name.trim()) {
+      newErrors.name = "Full name is required";
+      isValid = false;
+    }
+
+    if (!formData.Email.trim()) {
+      newErrors.email = "Email address is required";
+      isValid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.Email)) {
+      newErrors.email = "Please enter a valid email address";
+      isValid = false;
+    }
+
+    if (!formData.Phone.trim()) {
+      newErrors.phone = "Phone number is required";
+      isValid = false;
+    } else if (!/^\d{10}$/.test(formData.Phone)) {
+      newErrors.phone = "Please enter a valid 10-digit phone number";
+      isValid = false;
+    }
+
+    if (!formData.Message.trim()) {
+      newErrors.message = "Message is required";
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  };
   
   const heroImages = [
     "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=1440&h=800&fit=crop",
@@ -83,12 +125,74 @@ const Index = () => {
     return () => clearInterval(timer);
   }, [heroImages.length]);
 
-  const handleFormSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission here - you can integrate with your backend
-    console.log("Form submitted:", formData);
-    alert("Thank you for your inquiry! We'll get back to you soon.");
-    setFormData({ name: "", email: "", phone: "", message: "" });
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault(); // Prevent default form submission
+
+    const url = "https://script.google.com/macros/s/AKfycbzfD5ifoutIgboynAYIuNoYzJGWKWtK3IeveyP5blZtVBzRE13nVMLJ6QLgLsQl6cKO/exec";
+
+    // Validate form data
+    if (!formData.Name || !formData.Email || !formData.Phone || !formData.Message) {
+      toast({
+        title: "Form Error",
+        description: "Please fill out all fields correctly.",
+        variant: "destructive",
+        duration: 5000,
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Convert formData to URL-encoded format
+      const formBody = new URLSearchParams({
+        Name: formData.Name,
+        Email: formData.Email,
+        Phone: formData.Phone,
+        Message: formData.Message,
+      }).toString();
+
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: formBody,
+        redirect: "follow", // Handle any redirects
+        mode: "cors", // Ensure CORS compatibility
+      });
+
+      const result = await response.json(); // Parse JSON response from Google Apps Script
+
+      if (response.ok && result.status === "success") {
+        toast({
+          title: "Sent Successfully!",
+          description: "Thank you for reaching out. We'll contact you within 24 hours.",
+          className: "bg-[#1A3C34] text-white border-[#D4A017]",
+          duration: 5000,
+        });
+        // Reset form
+        setFormData({
+          Name: "",
+          Email: "",
+          Phone: "",
+          Message: "",
+        });
+      } else {
+        throw new Error(result.message || `Server error: ${response.status}`);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      const errorMessage = error.message || "Something went wrong. Please try again.";
+      toast({
+        title: "Submission Failed",
+        description: errorMessage,
+        variant: "destructive",
+        duration: 5000,
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -354,8 +458,8 @@ const Index = () => {
                     <Label htmlFor="name">Full Name</Label>
                     <Input
                       id="name"
-                      name="name"
-                      value={formData.name}
+                      name="Name"
+                      value={formData.Name}
                       onChange={handleInputChange}
                       required
                       className="mt-1"
@@ -365,9 +469,9 @@ const Index = () => {
                     <Label htmlFor="email">Email Address</Label>
                     <Input
                       id="email"
-                      name="email"
+                      name="Email"
                       type="email"
-                      value={formData.email}
+                      value={formData.Email}
                       onChange={handleInputChange}
                       required
                       className="mt-1"
@@ -377,9 +481,9 @@ const Index = () => {
                     <Label htmlFor="phone">Phone Number</Label>
                     <Input
                       id="phone"
-                      name="phone"
+                      name="Phone"
                       type="tel"
-                      value={formData.phone}
+                      value={formData.Phone}
                       onChange={handleInputChange}
                       required
                       className="mt-1"
@@ -389,15 +493,15 @@ const Index = () => {
                     <Label htmlFor="message">Message</Label>
                     <Textarea
                       id="message"
-                      name="message"
-                      value={formData.message}
+                      name="Message"
+                      value={formData.Message}
                       onChange={handleInputChange}
                       rows={4}
                       className="mt-1"
                     />
                   </div>
                   <Button type="submit" className="w-full bg-[#D4A017] hover:bg-[#B8901A] text-white font-semibold py-3">
-                    Send Enquiry
+                    {isSubmitting ? 'Sending...' : 'Send Enquiry'}
                   </Button>
                 </form>
               </CardContent>

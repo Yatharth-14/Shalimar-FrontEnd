@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
-export const Header = () => {
+export const Header = ({isFormSubmitted}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const menuItems = [
@@ -14,6 +14,8 @@ export const Header = () => {
     { label: "Gallery", id: "gallery" },
     { label: "Floor Plans", id: "floor-plans" },
     { label: "Contact", id: "contact" },
+    { label: "Download Brochure", id: "download-brochure" },
+
   ];
 
   const scrollToSection = (id: string) => {

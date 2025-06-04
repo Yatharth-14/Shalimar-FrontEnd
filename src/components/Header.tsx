@@ -1,4 +1,3 @@
-// DOCUMENT filename="Header.tsx"
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
@@ -31,7 +30,7 @@ export const Header = ({ isFormSubmitted }) => {
     if (isFormSubmitted) {
       // Trigger download of local PDF
       const link = document.createElement("a");
-      link.href = "../lovable-uploads/Marbella Mini Brochure.pdf"; // Path to local PDF
+      link.href = "/lovable-uploads/Marbella Mini Brochure.pdf"; // Absolute path to local PDF
       link.download = "brochure.pdf"; // Suggests download with this filename
       document.body.appendChild(link);
       link.click();
@@ -52,7 +51,7 @@ export const Header = ({ isFormSubmitted }) => {
   return (
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-16 custom-md:h-20">
           {/* Logo */}
           <div
             className="flex items-center space-x-3 cursor-pointer"
@@ -66,7 +65,7 @@ export const Header = ({ isFormSubmitted }) => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden custom-md:flex items-center space-x-8">
             {menuItems.map((item) => (
               <button
                 key={item.id}
@@ -86,7 +85,7 @@ export const Header = ({ isFormSubmitted }) => {
           </nav>
 
           {/* Right side actions */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden custom-md:flex items-center space-x-4">
             <ThemeToggle />
             <Button
               onClick={() => scrollToSection("contact")}
@@ -97,7 +96,7 @@ export const Header = ({ isFormSubmitted }) => {
           </div>
 
           {/* Mobile Menu Button and Theme Toggle */}
-          <div className="md:hidden flex items-center space-x-2">
+          <div className="custom-md:hidden flex items-center space-x-2">
             <ThemeToggle />
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -110,7 +109,7 @@ export const Header = ({ isFormSubmitted }) => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden border-t bg-background">
+          <div className="custom-md:hidden border-t bg-background">
             <nav className="py-4 space-y-2">
               {menuItems.map((item) => (
                 <button

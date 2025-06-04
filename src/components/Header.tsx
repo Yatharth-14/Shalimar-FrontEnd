@@ -1,10 +1,9 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
-export const Header = ({isFormSubmitted}) => {
+export const Header = ({ isFormSubmitted }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const menuItems = [
@@ -15,13 +14,12 @@ export const Header = ({isFormSubmitted}) => {
     { label: "Floor Plans", id: "floor-plans" },
     { label: "Contact", id: "contact" },
     { label: "Download Brochure", id: "download-brochure" },
-
   ];
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
     setIsMenuOpen(false);
   };
@@ -29,18 +27,18 @@ export const Header = ({isFormSubmitted}) => {
   return (
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <div className="flex items-center space-x-3 cursor-pointer" onClick={() => scrollToSection('home')}>
+          <div className="flex items-center space-x-3 cursor-pointer ml-4" onClick={() => scrollToSection("home")}>
             <img
               src="/lovable-uploads/logo.png"
               alt="Shalimar One World"
-              className="h-12 w-auto"
+              className="h-10 w-auto"
             />
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-4">
             {menuItems.map((item) => (
               <button
                 key={item.id}
@@ -53,18 +51,18 @@ export const Header = ({isFormSubmitted}) => {
           </nav>
 
           {/* Right side actions */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center space-x-3">
             <ThemeToggle />
-            <Button 
-              onClick={() => scrollToSection('contact')}
-              className="bg-[#D4A017] hover:bg-[#B8901A] text-white px-6 py-2 font-semibold transition-all duration-300 hover:scale-105"
+            <Button
+              onClick={() => scrollToSection("contact")}
+              className="bg-[#D4A017] hover:bg-[#B8901A] text-white px-4 py-2 text-sm font-semibold transition-all duration-300 hover:scale-105"
             >
               Enquire Now
             </Button>
           </div>
 
           {/* Mobile Menu Button and Theme Toggle */}
-          <div className="md:hidden flex items-center space-x-2">
+          <div className="lg:hidden flex items-center space-x-2">
             <ThemeToggle />
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -77,7 +75,7 @@ export const Header = ({isFormSubmitted}) => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden border-t bg-background">
+          <div className="lg:hidden border-t bg-background">
             <nav className="py-4 space-y-2">
               {menuItems.map((item) => (
                 <button
@@ -89,8 +87,8 @@ export const Header = ({isFormSubmitted}) => {
                 </button>
               ))}
               <div className="px-4 pt-2">
-                <Button 
-                  onClick={() => scrollToSection('contact')}
+                <Button
+                  onClick={() => scrollToSection("contact")}
                   className="w-full bg-[#D4A017] hover:bg-[#B8901A] text-white font-semibold"
                 >
                   Enquire Now

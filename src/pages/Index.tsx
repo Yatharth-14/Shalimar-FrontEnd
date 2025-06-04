@@ -16,9 +16,9 @@ const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const heroImages = [
-    "https://i0.wp.com/housepartner.in/wp-content/uploads/2023/12/6.png?resize=525%2C328&ssl=1",
-    "https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=1440&h=800&fit=crop",
-    "https://images.unsplash.com/photo-1459767129954-1b1c1f9b9ace?w=1440&h=800&fit=crop"
+    "../lovable-uploads/Hero Carousel 1.png",
+    "../lovable-uploads/Hero Carousel 2.png",
+    "../lovable-uploads/Hero Carousel 3.png"
   ];
 
   useEffect(() => {

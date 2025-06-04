@@ -16,7 +16,7 @@ const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const heroImages = [
-    "../lovable-uploads/Hero Carousel 1.png",
+    "../lovable-uploads/Hero-Carousel-4.png",
     "../lovable-uploads/Hero Carousel 2.png",
     "../lovable-uploads/Hero Carousel 3.png"
   ];

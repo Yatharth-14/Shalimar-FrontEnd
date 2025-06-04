@@ -12,7 +12,7 @@ const HeroSection = ({
   heroImages,
 }: HeroSectionProps) => {
   return (
-    <section id="home" className="relative h-screen overflow-hidden">
+    <section id="home" className="relative min-h-screen overflow-hidden">
       <div className="absolute inset-0">
         {heroImages.map((image, index) => (
           <div
@@ -21,21 +21,23 @@ const HeroSection = ({
               index === currentSlide ? "opacity-100" : "opacity-0"
             }`}
           >
-            <img
-              src={image}
-              alt={`Shalimar One World ${index + 1}`}
-              className="w-full h-full object-cover"
-            />
+            <div className="aspect-[16/9] w-full h-full">
+              <img
+                src={image}
+                alt={`Shalimar One World ${index + 1}`}
+                className="w-full h-full object-contain"
+              />
+            </div>
           </div>
         ))}
       </div>
 
       <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-        <div className="text-center text-white max-w-4xl px-4">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
+        <div className="text-center text-white max-w-4xl px-4 sm:px-6">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6 animate-fade-in">
             Welcome to Shalimar One World
           </h1>
-          <p className="text-xl md:text-2xl mb-8 animate-fade-in">
+          <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 animate-fade-in">
             Discover Luxury Living in Lucknow
           </p>
           <Button
@@ -44,14 +46,14 @@ const HeroSection = ({
                 .getElementById("about")
                 ?.scrollIntoView({ behavior: "smooth" })
             }
-            className="bg-[#D4A017] hover:bg-[#B8901A] text-white px-8 py-4 text-lg font-semibold transition-all duration-300 hover:scale-105"
+            className="bg-[#D4A017] hover:bg-[#B8901A] text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold transition-all duration-300 hover:scale-105"
           >
             Explore Now
           </Button>
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
+      <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
         {heroImages.map((_, index) => (
           <button
             key={index}

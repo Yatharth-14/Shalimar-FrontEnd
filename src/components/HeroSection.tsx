@@ -12,28 +12,31 @@ const HeroSection = ({
   heroImages,
 }: HeroSectionProps) => {
   return (
-    <section id="home" className="relative min-h-screen overflow-hidden">
-      <div className="absolute inset-0">
+    <section
+      id="home"
+      className="relative w-full min-h-screen overflow-hidden flex items-center justify-center"
+    >
+      {/* Background Images */}
+      <div className="absolute inset-0 w-full h-full">
         {heroImages.map((image, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
+            className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${
               index === currentSlide ? "opacity-100" : "opacity-0"
             }`}
           >
-            <div className="aspect-[16/9] w-full h-full">
-              <img
-                src={image}
-                alt={`Shalimar One World ${index + 1}`}
-                className="w-full h-full object-contain"
-              />
-            </div>
+            <img
+              src={image}
+              alt={`Shalimar One World ${index + 1}`}
+              className="w-full h-full object-contain"
+            />
           </div>
         ))}
       </div>
 
-      <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-        <div className="text-center text-white max-w-4xl px-4 sm:px-6">
+      {/* Overlay Content */}
+      <div className="absolute inset-0 bg-black/40 flex items-center justify-center px-4">
+        <div className="text-center text-white max-w-4xl">
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6 animate-fade-in">
             Welcome to Shalimar One World
           </h1>
@@ -53,6 +56,7 @@ const HeroSection = ({
         </div>
       </div>
 
+      {/* Dots Navigation */}
       <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
         {heroImages.map((_, index) => (
           <button

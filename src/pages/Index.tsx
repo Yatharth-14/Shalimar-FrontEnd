@@ -11,6 +11,7 @@ import GallerySection from "@/components/GallerySection";
 import FloorPlansSection from "@/components/FloorPlansSection";
 import FormComponent from "../components/FormComponent";
 import CallToActionSection from "@/components/CallToActionSection";
+import { ReraInfoCard } from "@/components/ReraInfoCard";
 
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -34,6 +35,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <ReraInfoCard/>
       <Header isFormSubmitted={isFormSubmitted} />
       <HeroSection currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} heroImages={heroImages} />
       <HighlightsSection />

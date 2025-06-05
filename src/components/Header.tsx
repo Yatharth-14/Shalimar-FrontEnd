@@ -102,7 +102,11 @@ export const Header = ({ isFormSubmitted }) => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 text-foreground hover:text-[#D4A017]"
             >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
         </div>

@@ -9,6 +9,12 @@ const milestones = [
 ];
 
 const AboutSection = () => {
+  const handleCardClick = () => {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <section id="about" className="py-20 px-4 bg-background">
       <div className="max-w-7xl mx-auto">
@@ -49,7 +55,7 @@ const AboutSection = () => {
 
         <div className="grid md:grid-cols-4 gap-8">
           {milestones.map((milestone, index) => (
-            <Card key={index} className="bg-card border-none shadow-lg">
+            <Card onClick={handleCardClick} key={index} className="bg-card border-none shadow-lg">
               <CardContent className="p-6 text-center">
                 <div className="text-2xl font-bold text-[#D4A017] mb-2">{milestone.year}</div>
                 <h4 className="text-lg font-bold text-[#1A3C34] dark:text-[#D4A017] mb-3">{milestone.title}</h4>

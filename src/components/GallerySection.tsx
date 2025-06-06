@@ -17,6 +17,12 @@ const galleryImages = [
 ];
 
 const GallerySection = () => {
+  const handleCardClick = () => {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <section
       id="gallery"
@@ -49,7 +55,8 @@ const GallerySection = () => {
           {galleryImages.map((image, index) => (
             <SwiperSlide key={index}>
               <Card
-                className="relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border-none"
+                className="relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border-none cursor-pointer"
+                onClick={handleCardClick}
               >
                 <CardContent className="p-0">
                   <div className="aspect-[4/3] w-full">

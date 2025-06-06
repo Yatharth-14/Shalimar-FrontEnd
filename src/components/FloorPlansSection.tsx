@@ -1,8 +1,14 @@
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { Download } from "lucide-react";
 
-const floorPlans = [
+interface FloorPlan {
+  title: string;
+  area: string;
+  image: string;
+}
+
+const floorPlans: FloorPlan[] = [
   {
     title: "Tower A, B and D",
     area: "",
@@ -20,7 +26,7 @@ const floorPlans = [
   },
   {
     title: "3 BHK Tower A, B and D",
-    area: "102.56 SQ.MT. (1103.96 SQ.FT.",
+    area: "102.56 SQ.MT. (1103.96 SQ.FT.)",
     image: "../lovable-uploads/Floor-Plan-4.png",
   },
   {
@@ -30,7 +36,13 @@ const floorPlans = [
   },
 ];
 
-const FloorPlansSection = () => {
+const FloorPlansSection: React.FC = () => {
+  const handleCardClick = () => {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <section
       id="floor-plans"
@@ -51,26 +63,24 @@ const FloorPlansSection = () => {
           {floorPlans.map((plan, index) => (
             <Card
               key={index}
-              className="bg-card border-none shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-card border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={handleCardClick}
             >
-              <CardContent className="p-4 sm:p-6 flex flex-col justify-between min-h-[360px] sm:min-h-[400px]">
+              <CardContent className="p-3 sm:p-4 flex flex-col justify-between min-h-[280px] sm:min-h-[320px]">
                 <div>
                   <img
                     src={plan.image}
                     alt={plan.title}
-                    className="w-full max-h-48 sm:max-h-64 object-contain rounded-lg mb-4 blur-sm"
+                    className="w-full max-h-36 sm:max-h-48 object-contain rounded-lg mb-3 blur-sm"
+                    loading="lazy"
                   />
-                  <h3 className="text-lg sm:text-xl font-bold text-[#1A3C34] dark:text-[#D4A017] mb-2 line-clamp-2">
+                  <h3 className="text-base sm:text-lg font-bold text-[#1A3C34] dark:text-[#D4A017] mb-2 line-clamp-2">
                     {plan.title}
                   </h3>
-                  <p className="text-sm sm:text-base text-muted-foreground mb-4">
+                  <p className="text-xs sm:text-sm text-muted-foreground mb-3">
                     {plan.area}
                   </p>
                 </div>
-                <Button className="w-full bg-[#1A3C34] hover:bg-[#2A4C44] dark:bg-[#D4A017] dark:hover:bg-[#B8901A] text-white text-sm sm:text-base">
-                  <Download className="w-4 h-4 mr-2" />
-                  Download PDF
-                </Button>
               </CardContent>
             </Card>
           ))}

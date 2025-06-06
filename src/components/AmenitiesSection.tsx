@@ -11,6 +11,12 @@ const amenities = [
 ];
 
 const AmenitiesSection = () => {
+  const handleCardClick = () => {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <section id="amenities" className="py-20 px-4 bg-[#F5E6CC] dark:bg-[#2A2520]">
       <div className="max-w-7xl mx-auto">
@@ -25,7 +31,8 @@ const AmenitiesSection = () => {
         
         <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-8">
           {amenities.map((amenity, index) => (
-            <Card key={index} className="bg-card border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+            <Card key={index} className="bg-card border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={handleCardClick}>
               <CardContent className="p-6 text-center">
                 <div className="inline-flex items-center justify-center w-12 h-12 bg-[#1A3C34] dark:bg-[#D4A017] text-white rounded-full mb-4">
                   <amenity.icon className="w-6 h-6" />

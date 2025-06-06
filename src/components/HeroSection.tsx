@@ -38,7 +38,7 @@ const HeroSection = ({
       <div className="absolute inset-0 bg-black/40 flex items-center justify-center px-4">
         <div className="text-center text-white max-w-4xl">
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6 animate-fade-in">
-            Welcome to Shalimar One World
+            Welcome to Shalimar Marbella
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 animate-fade-in">
             Discover Luxury Living in Lucknow

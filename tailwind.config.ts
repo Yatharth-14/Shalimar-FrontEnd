@@ -20,6 +20,7 @@ export default {
     extend: {
       screens: {
         "custom-md": "947px", // Custom breakpoint for hamburger menu
+        // "sm": "640px"
       },
       colors: {
         border: "hsl(var(--border))",

@@ -13,8 +13,8 @@ const HeroSection = ({
 }: HeroSectionProps) => {
   return (
     <section
-      id="home" 
-      className="relative w-full min-h-screen overflow-hidden flex items-center justify-center"
+      id="home"
+      className="relative w-full h-[300px] lg:h-[1000px] md:h-[500px] sm:h-[300px] overflow-hidden flex items-center justify-center"
     >
       {/* Background Images */}
       <div className="absolute inset-0 w-full h-full">
@@ -28,7 +28,7 @@ const HeroSection = ({
             <img
               src={image}
               alt={`Shalimar One World ${index + 1}`}
-              className="w-full h-full object-contain"
+              className="w-full h-full object-cover object-center"
             />
           </div>
         ))}

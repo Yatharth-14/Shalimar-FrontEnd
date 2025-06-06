@@ -20,7 +20,7 @@ const CallToActionSection = () => {
           <Button 
             onClick={() => document.getElementById('floor-plans')?.scrollIntoView({ behavior: 'smooth' })}
             variant="outline" 
-            className="border-white text-white hover:bg-white hover:text-[#1A3C34] px-8 py-4 text-lg font-semibold"
+            className="border-white hover:bg-white text-[#1A3C34] px-8 py-4 text-lg font-semibold"
           >
             View Floor Plans
           </Button>

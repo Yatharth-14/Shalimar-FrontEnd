@@ -63,7 +63,7 @@ const GallerySection = () => {
                     <img
                       src={image}
                       alt={`Gallery ${index + 1}`}
-                      className="w-full h-full object-contain rounded-lg"
+                      className="w-full h-full object-cover object-center rounded-lg"
                     />
                   </div>
                   <div className="absolute inset-0 bg-black/20 hover:bg-black/10 transition-all duration-300"></div>

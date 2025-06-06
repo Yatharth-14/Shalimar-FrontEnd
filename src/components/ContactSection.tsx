@@ -41,7 +41,7 @@ const ContactSection = ({ formData, errors, isSubmitting, handleInputChange, han
                   </div>
                   <div>
                     <h4 className="font-bold text-[#1A3C34] dark:text-[#D4A017]">Phone</h4>
-                    <p className="text-muted-foreground">+91 98765 43210</p>
+                    <p className="text-muted-foreground">+91 8010702010</p>
                   </div>
                 </div>
               </CardContent>
@@ -55,7 +55,7 @@ const ContactSection = ({ formData, errors, isSubmitting, handleInputChange, han
                   </div>
                   <div>
                     <h4 className="font-bold text-[#1A3C34] dark:text-[#D4A017]">Email</h4>
-                    <p className="text-muted-foreground">info@shalimar.com</p>
+                    <p className="text-muted-foreground">sethi1406@gmail.com</p>
                   </div>
                 </div>
               </CardContent>
@@ -69,7 +69,7 @@ const ContactSection = ({ formData, errors, isSubmitting, handleInputChange, han
                   </div>
                   <div>
                     <h4 className="font-bold text-[#1A3C34] dark:text-[#D4A017]">Address</h4>
-                    <p className="text-muted-foreground">Aliganj Extension, Lucknow, UP 226024</p>
+                    <p className="text-muted-foreground">Shalimar Marbella, GH18, Gomti Nagar, Badhamau, Lucknow, Uttar Pradesh 226001</p>
                   </div>
                 </div>
               </CardContent>

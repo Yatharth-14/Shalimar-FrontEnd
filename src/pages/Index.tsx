@@ -19,7 +19,7 @@ const Index = () => {
   const heroImages = [
     "../lovable-uploads/Hero-Carousel-4.png",
     "../lovable-uploads/Hero Carousel 2.png",
-    "../lovable-uploads/Hero Carousel 3.png"
+    "../lovable-uploads/Hero Carousel 3.png",
   ];
 
   useEffect(() => {
@@ -35,9 +35,13 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <ReraInfoCard/>
+      <ReraInfoCard />
       <Header isFormSubmitted={isFormSubmitted} />
-      <HeroSection currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} heroImages={heroImages} />
+      <HeroSection
+        currentSlide={currentSlide}
+        setCurrentSlide={setCurrentSlide}
+        heroImages={heroImages}
+      />
       <HighlightsSection />
       <AboutSection />
       <AmenitiesSection />

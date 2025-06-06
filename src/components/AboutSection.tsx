@@ -39,9 +39,7 @@ const AboutSection: React.FC = () => {
               Trusted Real Estate Partner
             </h2>
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              Shalimar Group has been a pioneering force in real estate development since 1985. 
-              With over three decades of experience, we have consistently delivered exceptional 
-              residential and commercial projects that redefine modern living.
+              Built meticulously with the urban pioneer in mind, Marbella embodies the spirit of those who shatter glass ceilings. From trailblazers to go-getters, we're dedicated to those who don't just chase dreams, but actively build them each day. At Marbella, we celebrate the self-made, offering a world where you can revel in your successes and embrace the life you've earned.
             </p>
             <div className="flex items-center space-x-6 mb-8">
               <div className="text-center">

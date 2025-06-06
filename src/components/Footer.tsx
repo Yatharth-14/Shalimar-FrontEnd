@@ -62,19 +62,19 @@ export const Footer = () => {
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-[#D4A017] mt-0.5 flex-shrink-0" />
                 <div className="text-gray-300 text-sm">
-                  Shalimar One World, Aliganj Extension, Lucknow, Uttar Pradesh 226024
+                  Shalimar Marbella, GH18, Gomti Nagar, Badhamau, Lucknow, Uttar Pradesh 226001
                 </div>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-[#D4A017]" />
                 <a href="tel:+919876543210" className="text-gray-300 hover:text-[#D4A017] transition-colors text-sm">
-                  +91 98765 43210
+                  +91 8010702010
                 </a>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-[#D4A017]" />
-                <a href="mailto:info@shalimar.com" className="text-gray-300 hover:text-[#D4A017] transition-colors text-sm">
-                  info@shalimar.com
+                <a href="mailto:sethi1406@gmail.com" className="text-gray-300 hover:text-[#D4A017] transition-colors text-sm">
+                  sethi1406@gmail.com
                 </a>
               </div>
             </div>

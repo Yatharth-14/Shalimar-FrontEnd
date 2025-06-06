@@ -11,7 +11,7 @@ const milestones: Milestone[] = [
   { year: "1985", title: "Foundation", description: "Shalimar Group established" },
   { year: "2000", title: "Expansion", description: "Extended across UP" },
   { year: "2015", title: "Innovation", description: "Smart home technologies" },
-  { year: "2024", title: "Shalimar One World", description: "Our most prestigious project" }
+  { year: "2024", title: "Shalimar Marbella", description: "Our most prestigious project" }
 ];
 
 const AboutSection: React.FC = () => {

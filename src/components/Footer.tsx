@@ -17,8 +17,8 @@ export const Footer = () => {
           <div className="md:col-span-2">
             <div className="flex items-center space-x-3 mb-4">
               <img
-                src="/lovable-uploads/80a9172b-2080-4716-aa99-e0e05fdfe092.png"
-                alt="Shalimar One World"
+                src="../lovable-uploads/logo.png"
+                alt="Shalimar Marbella Logo"
                 className="h-12 w-auto"
               />
             </div>

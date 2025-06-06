@@ -19,7 +19,7 @@ export default {
     },
     extend: {
       screens: {
-        "custom-md": "947px", // Custom breakpoint for hamburger menu
+        "custom-md": "958px", // Custom breakpoint for hamburger menu
         // "sm": "640px"
       },
       colors: {

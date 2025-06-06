@@ -94,7 +94,7 @@ export const LocationAdvantages = ({ apiKey }: LocationAdvantagesProps) => {
   return (
     <section id="amenities" className="py-20 px-4 bg-[#F5E6CC] dark:bg-[#2A2520]">
     <div className="w-full max-w-5xl mx-auto p-4">
-      <h2 className="text-2xl font-bold text-yellow-600 mb-4">LOCATION ADVANTAGES</h2>
+      <h2 className="text-4xl md:text-5xl font-bold text-[#1A3C34] dark:text-[#D4A017] mb-4 text-center">Location Advantages</h2>
       {mapError ? (
         <div className="text-red-500 p-4 bg-red-100 rounded-lg">
           {mapError}
@@ -128,12 +128,12 @@ export const LocationAdvantages = ({ apiKey }: LocationAdvantagesProps) => {
 
           {/* Location Advantages List */}
           
-          <div className="w-full md:w-1/3 bg-yellow-600 text-white p-6 rounded-lg shadow-md">
+          <div className="bg-yellow-600 text-white p-6 rounded-lg shadow-md">
             <ul className="space-y-4">
               {advantages.map((advantage, index) => (
                 <li key={index} className="flex items-center">
                   <span className="w-3 h-3 bg-white rounded-full mr-3"></span>
-                  <span className="text-sm">
+                  <span className="text-sm w-[300px]">
                     {advantage.name} - {advantage.distance}
                   </span>
                 </li>

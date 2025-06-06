@@ -1,20 +1,27 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
-const milestones = [
+interface Milestone {
+  year: string;
+  title: string;
+  description: string;
+}
+
+const milestones: Milestone[] = [
   { year: "1985", title: "Foundation", description: "Shalimar Group established" },
   { year: "2000", title: "Expansion", description: "Extended across UP" },
   { year: "2015", title: "Innovation", description: "Smart home technologies" },
   { year: "2024", title: "Shalimar One World", description: "Our most prestigious project" }
 ];
 
-const AboutSection = () => {
+const AboutSection: React.FC = () => {
   const handleCardClick = () => {
     const contactSection = document.getElementById("contact");
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: "smooth" });
     }
   };
+
   return (
     <section id="about" className="py-20 px-4 bg-background">
       <div className="max-w-7xl mx-auto">
@@ -55,7 +62,11 @@ const AboutSection = () => {
 
         <div className="grid md:grid-cols-4 gap-8">
           {milestones.map((milestone, index) => (
-            <Card onClick={handleCardClick} key={index} className="bg-card border-none shadow-lg">
+            <Card
+              key={index}
+              onClick={handleCardClick}
+              className="bg-card border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+            >
               <CardContent className="p-6 text-center">
                 <div className="text-2xl font-bold text-[#D4A017] mb-2">{milestone.year}</div>
                 <h4 className="text-lg font-bold text-[#1A3C34] dark:text-[#D4A017] mb-3">{milestone.title}</h4>

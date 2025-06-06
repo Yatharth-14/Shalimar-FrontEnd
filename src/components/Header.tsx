@@ -9,7 +9,7 @@ export const Header = ({ isFormSubmitted }) => {
   const { toast } = useToast();
 
   const menuItems = [
-    { label: "Home", id: "home" },
+    { label: "Homeee", id: "home" },
     { label: "About Project", id: "about" },
     { label: "Amenities", id: "amenities" },
     { label: "Gallery", id: "gallery" },

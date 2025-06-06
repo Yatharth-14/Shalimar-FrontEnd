@@ -1,7 +1,14 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Building2, MapPin, Users } from "lucide-react";
+import { LucideIcon } from "lucide-react";
 
-const highlights = [
+interface Highlight {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+}
+
+const highlights: Highlight[] = [
   {
     icon: Building2,
     title: "Luxury Apartments",
@@ -19,7 +26,14 @@ const highlights = [
   }
 ];
 
-const HighlightsSection = () => {
+const HighlightsSection: React.FC = () => {
+  const handleCardClick = () => {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="py-20 px-4 bg-[#F5E6CC] dark:bg-[#2A2520]">
       <div className="max-w-7xl mx-auto">
@@ -34,19 +48,21 @@ const HighlightsSection = () => {
         
         <div className="grid md:grid-cols-3 gap-8">
           {highlights.map((highlight, index) => (
-            <Card key={index} className="bg-card border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-              <CardContent className="p-8 text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-[#1A3C34] dark:bg-[#D4A017] text-white rounded-full mb-6">
-                  <highlight.icon className="w-8 h-8" />
-                </div>
-                <h3 className="text-xl font-bold text-[#1A3C34] dark:text-[#D4A017] mb-4">
-                  {highlight.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {highlight.description}
-                </p>
-              </CardContent>
-            </Card>
+            <div key={index} onClick={handleCardClick} className="cursor-pointer">
+              <Card className="bg-card border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <CardContent className="p-8 text-center">
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-[#1A3C34] dark:bg-[#D4A017] text-white rounded-full mb-6">
+                    <highlight.icon className="w-8 h-8" />
+                  </div>
+                  <h3 className="text-xl font-bold text-[#1A3C34] dark:text-[#D4A017] mb-4">
+                    {highlight.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {highlight.description}
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
           ))}
         </div>
       </div>

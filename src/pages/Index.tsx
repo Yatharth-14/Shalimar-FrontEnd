@@ -12,6 +12,7 @@ import FloorPlansSection from "@/components/FloorPlansSection";
 import FormComponent from "../components/FormComponent";
 import CallToActionSection from "@/components/CallToActionSection";
 import { ReraInfoCard } from "@/components/ReraInfoCard";
+import { LocationAdvantages } from "@/components/LocationAdvantages";
 
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -48,6 +49,7 @@ const Index = () => {
       <GallerySection />
       <FloorPlansSection />
       <FormComponent onFormSubmit={handleFormSubmission} />
+      <LocationAdvantages apiKey="AIzaSyB8e8zb64Gb_iaesoxpAO0eL_ZBqsrubt4" />
       <CallToActionSection />
       <Footer />
       <WhatsAppButton />

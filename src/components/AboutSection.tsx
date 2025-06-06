@@ -28,7 +28,7 @@ const AboutSection: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
           <div>
             <img
-              src="https://images.unsplash.com/photo-1496307653780-42ee777d4833?w=600&h=400&fit=crop"
+              src="https://shalimar-one-world.landmarkrealtors.co.in/images/about.jpg"
               alt="Shalimar Group"
               className="rounded-lg shadow-lg w-full"
             />

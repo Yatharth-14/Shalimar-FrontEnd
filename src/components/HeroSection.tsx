@@ -13,7 +13,7 @@ const HeroSection = ({
 }: HeroSectionProps) => {
   return (
     <section
-      id="home"
+      id="home" 
       className="relative w-full min-h-screen overflow-hidden flex items-center justify-center"
     >
       {/* Background Images */}

@@ -7,18 +7,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { X } from "lucide-react";
 
-interface FloorPlan {
-  title: string;
-  area: string;
-  image: string;
-}
-
-interface FormModalProps {
-  plan: FloorPlan | null;
+interface GalleryFormModalProps {
   onClose: () => void;
 }
 
-const FormModal = ({ plan, onClose }: FormModalProps) => {
+const GalleryFormModal = ({ onClose }: GalleryFormModalProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     Name: "",
@@ -66,16 +59,6 @@ const FormModal = ({ plan, onClose }: FormModalProps) => {
 
     setErrors(newErrors);
     return isValid;
-  };
-
-  const handleDownload = () => {
-    // Trigger download of the brochure PDF
-    const link = document.createElement("a");
-    link.href = "/lovable-uploads/Marbella Mini Brochure.pdf"; // Same path as in Header.tsx
-    link.download = "Marbella_Mini_Brochure.pdf"; // Same filename as in Header.tsx
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
   };
 
   const handleFormSubmit = async (e: React.FormEvent) => {
@@ -128,11 +111,8 @@ const FormModal = ({ plan, onClose }: FormModalProps) => {
           Name: "",
           Email: "",
           Phone: "",
-          Message: plan
-            ? `Interested in downloading floor plan: ${plan.title}`
-            : "",
+          Message: "",
         });
-        handleDownload(); // Trigger brochure download after successful submission
         onClose(); // Close modal
       } else {
         throw new Error(result.message || `Server error: ${response.status}`);
@@ -175,7 +155,7 @@ const FormModal = ({ plan, onClose }: FormModalProps) => {
         </Button>
         <CardContent className="p-8">
           <h3 className="text-2xl font-bold text-[#1A3C34] dark:text-[#D4A017] mb-6">
-            Download Floor Plan
+            Enquire About Gallery Image
           </h3>
           <form onSubmit={handleFormSubmit} className="space-y-6">
             <div>
@@ -250,4 +230,4 @@ const FormModal = ({ plan, onClose }: FormModalProps) => {
   );
 };
 
-export default FormModal;
+export default GalleryFormModal;

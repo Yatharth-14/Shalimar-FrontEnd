@@ -71,8 +71,8 @@ const FloorPlansSection: React.FC = () => {
               Floor Plans
             </h2>
             <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-              With focus on detailing and exquisite structure, This is where true
-              craftsmanship resides.
+              With focus on detailing and exquisite structure, This is where
+              true craftsmanship resides.
             </p>
           </div>
 
@@ -114,7 +114,9 @@ const FloorPlansSection: React.FC = () => {
           </div>
         </div>
       </section>
-      {isModalOpen && <FormModal plan={selectedPlan} onClose={handleModalClose} />}
+      {isModalOpen && (
+        <FormModal plan={selectedPlan} onClose={handleModalClose} />
+      )}
     </>
   );
 };

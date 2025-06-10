@@ -7,24 +7,17 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { X } from "lucide-react";
 
-interface FloorPlan {
-  title: string;
-  area: string;
-  image: string;
-}
-
-interface FormModalProps {
-  plan: FloorPlan | null;
+interface AmenitiesFormModalProps {
   onClose: () => void;
 }
 
-const FormModal = ({ plan, onClose }: FormModalProps) => {
+const AmenitiesFormModal = ({ onClose }: AmenitiesFormModalProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     Name: "",
     Email: "",
     Phone: "",
-    Message: "",
+    Message: "", // Empty message field
   });
   const [errors, setErrors] = useState({
     name: "",
@@ -68,21 +61,10 @@ const FormModal = ({ plan, onClose }: FormModalProps) => {
     return isValid;
   };
 
-  const handleDownload = () => {
-    // Trigger download of the brochure PDF
-    const link = document.createElement("a");
-    link.href = "/lovable-uploads/Marbella Mini Brochure.pdf"; // Same path as in Header.tsx
-    link.download = "Marbella_Mini_Brochure.pdf"; // Same filename as in Header.tsx
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const url =
-      "https://script.google.com/macros/s/AKfycbzfD5ifoutIgboynAYIuNoYzJGWKWtK3IeveyP5blZtVBzRE13nVMLJ6QLgLsQl6cKO/exec";
+    const url = "https://script.google.com/macros/s/AKfycbzfD5ifoutIgboynAYIuNoYzJGWKWtK3IeveyP5blZtVBzRE13nVMLJ6QLgLsQl6cKO/exec";
 
     if (!validateForm()) {
       toast({
@@ -119,8 +101,7 @@ const FormModal = ({ plan, onClose }: FormModalProps) => {
       if (response.ok && result.status === "success") {
         toast({
           title: "Sent Successfully!",
-          description:
-            "Thank you for reaching out. We'll contact you within 24 hours.",
+          description: "Thank you for reaching out. We'll contact you within 24 hours.",
           className: "bg-[#1A3C34] text-white border-[#D4A017]",
           duration: 5000,
         });
@@ -128,21 +109,15 @@ const FormModal = ({ plan, onClose }: FormModalProps) => {
           Name: "",
           Email: "",
           Phone: "",
-          Message: plan
-            ? `Interested in downloading floor plan: ${plan.title}`
-            : "",
+          Message: "",
         });
-        handleDownload(); // Trigger brochure download after successful submission
         onClose(); // Close modal
       } else {
         throw new Error(result.message || `Server error: ${response.status}`);
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      const errorMessage =
-        error instanceof Error
-          ? error.message
-          : "Something went wrong. Please try again.";
+      const errorMessage = error instanceof Error ? error.message : "Something went wrong. Please try again.";
       toast({
         title: "Submission Failed",
         description: errorMessage,
@@ -154,9 +129,7 @@ const FormModal = ({ plan, onClose }: FormModalProps) => {
     }
   };
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -175,7 +148,7 @@ const FormModal = ({ plan, onClose }: FormModalProps) => {
         </Button>
         <CardContent className="p-8">
           <h3 className="text-2xl font-bold text-[#1A3C34] dark:text-[#D4A017] mb-6">
-            Download Floor Plan
+            Enquire About Amenities
           </h3>
           <form onSubmit={handleFormSubmit} className="space-y-6">
             <div>
@@ -188,9 +161,7 @@ const FormModal = ({ plan, onClose }: FormModalProps) => {
                 required
                 className="mt-1"
               />
-              {errors.name && (
-                <p className="text-red-500 text-sm mt-1">{errors.name}</p>
-              )}
+              {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
             </div>
             <div>
               <Label htmlFor="email">Email Address</Label>
@@ -203,9 +174,7 @@ const FormModal = ({ plan, onClose }: FormModalProps) => {
                 required
                 className="mt-1"
               />
-              {errors.email && (
-                <p className="text-red-500 text-sm mt-1">{errors.email}</p>
-              )}
+              {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
             </div>
             <div>
               <Label htmlFor="phone">Phone Number</Label>
@@ -218,9 +187,7 @@ const FormModal = ({ plan, onClose }: FormModalProps) => {
                 required
                 className="mt-1"
               />
-              {errors.phone && (
-                <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
-              )}
+              {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
             </div>
             <div>
               <Label htmlFor="message">Message</Label>
@@ -232,9 +199,7 @@ const FormModal = ({ plan, onClose }: FormModalProps) => {
                 rows={4}
                 className="mt-1"
               />
-              {errors.message && (
-                <p className="text-red-500 text-sm mt-1">{errors.message}</p>
-              )}
+              {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
             </div>
             <Button
               type="submit"
@@ -250,4 +215,4 @@ const FormModal = ({ plan, onClose }: FormModalProps) => {
   );
 };
 
-export default FormModal;
+export default AmenitiesFormModal;

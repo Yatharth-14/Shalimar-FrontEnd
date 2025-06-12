@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import GalleryFormModal from "@/components/GalleryFormModal";
+import EnquiryFormModal from "../components/EnquiryFormModal";
 
 // Import Swiper styles
 import "swiper/css";
@@ -20,16 +20,13 @@ const galleryImages = [
 
 const GallerySection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [selectedImage, setSelectedImage] = useState<{ src: string; index: number } | null>(null);
 
   const handleImageClick = (src: string, index: number) => {
-    // setSelectedImage({ src, index });
     setIsModalOpen(true);
   };
 
   const handleModalClose = () => {
     setIsModalOpen(false);
-    // setSelectedImage(null);
   };
 
   return (
@@ -83,7 +80,7 @@ const GallerySection = () => {
           </Swiper>
         </div>
       </section>
-      {isModalOpen && <GalleryFormModal onClose={handleModalClose} />}
+      {isModalOpen && <EnquiryFormModal onClose={handleModalClose} title="Enquire About Gallery Image" />}
     </>
   );
 };

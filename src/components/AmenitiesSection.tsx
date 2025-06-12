@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Waves, Dumbbell, Car, Shield, TreePine, Building } from "lucide-react";
-import AmenitiesFormModal from "@/components/AmenitiesFormModal";
+import EnquiryFormModal from "../components/EnquiryFormModal";
 
 const amenities = [
   { icon: Waves, title: "Swimming Pool", description: "Olympic-size swimming pool with kids' area" },
@@ -16,7 +16,7 @@ const AmenitiesSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleCardClick = () => {
-    setIsModalOpen(true); // Open the modal
+    setIsModalOpen(true);
   };
 
   const handleModalClose = () => {
@@ -56,7 +56,7 @@ const AmenitiesSection = () => {
           </div>
         </div>
       </section>
-      {isModalOpen && <AmenitiesFormModal onClose={handleModalClose} />}
+      {isModalOpen && <EnquiryFormModal onClose={handleModalClose} title="Enquire About Amenities" />}
     </>
   );
 };

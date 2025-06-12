@@ -1,5 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useState } from "react";
+import EnquiryFormModal from "./EnquiryFormModal";
 
 interface Milestone {
   year: string;
@@ -15,15 +17,26 @@ const milestones: Milestone[] = [
 ];
 
 const AboutSection: React.FC = () => {
-  const handleCardClick = () => {
-    const contactSection = document.getElementById("contact");
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
+    const handleCardClick = () => {
+      setIsModalOpen(true);
+    };
+  
+    const handleModalClose = () => {
+      setIsModalOpen(false);
+    };
+    
+  // const handleCardClick = () => {
+  //   const contactSection = document.getElementById("contact");
+  //   if (contactSection) {
+  //     contactSection.scrollIntoView({ behavior: "smooth" });
+  //   }
+  // };
 
   return (
-    <section id="about" className="py-20 px-4 bg-background">
+    <><section id="about" className="py-20 px-4 bg-background">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
           <div>
@@ -75,6 +88,10 @@ const AboutSection: React.FC = () => {
         </div>
       </div>
     </section>
+    {isModalOpen && <EnquiryFormModal onClose={handleModalClose} title="Enquire About Shalimar Marbella" />}
+    </>
+    
+    
   );
 };
 

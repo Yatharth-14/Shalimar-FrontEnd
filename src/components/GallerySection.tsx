@@ -80,7 +80,7 @@ const GallerySection = () => {
           </Swiper>
         </div>
       </section>
-      {isModalOpen && <EnquiryFormModal onClose={handleModalClose} title="Enquire About Gallery Image" />}
+      {isModalOpen && <EnquiryFormModal onClose={handleModalClose} title="Enquire About Shalimar Marbella" />}
     </>
   );
 };

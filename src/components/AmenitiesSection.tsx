@@ -56,7 +56,7 @@ const AmenitiesSection = () => {
           </div>
         </div>
       </section>
-      {isModalOpen && <EnquiryFormModal onClose={handleModalClose} title="Enquire About Amenities" />}
+      {isModalOpen && <EnquiryFormModal onClose={handleModalClose} title="Enquire About Shalimar Marbella" />}
     </>
   );
 };

@@ -3,6 +3,7 @@ import { Building2, MapPin, Users } from "lucide-react";
 import { LucideIcon } from "lucide-react";
 import { useState } from "react";
 import EnquiryFormModal from "./EnquiryFormModal";
+import ReactGA from "react-ga4"; // ✅ Import GA4
 
 interface Highlight {
   icon: LucideIcon;
@@ -34,7 +35,14 @@ const highlights: Highlight[] = [
 const HighlightsSection: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleCardClick = () => {
+  // ✅ Updated to include GA event
+  const handleCardClick = (title: string) => {
+    ReactGA.event({
+      category: "Highlights Card",
+      action: "Card Clicked",
+      label: title,
+    });
+
     setIsModalOpen(true);
   };
 
@@ -60,12 +68,10 @@ const HighlightsSection: React.FC = () => {
             {highlights.map((highlight, index) => (
               <div
                 key={index}
-                onClick={handleCardClick}
+                onClick={() => handleCardClick(highlight.title)} // ✅ Click tracking
                 className="cursor-pointer"
               >
-                <Card
-                  className="bg-card border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 h-80 flex flex-col justify-between"
-                >
+                <Card className="bg-card border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 h-80 flex flex-col justify-between">
                   <CardContent className="p-8 text-center flex flex-col items-center justify-between h-full">
                     <div className="inline-flex items-center justify-center w-16 h-16 bg-[#1A3C34] dark:bg-[#D4A017] text-white rounded-full mb-6">
                       <highlight.icon className="w-8 h-8" />

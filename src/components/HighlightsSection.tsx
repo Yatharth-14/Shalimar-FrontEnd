@@ -39,7 +39,7 @@ const HighlightsSection: React.FC = () => {
   const handleCardClick = (title: string) => {
     ReactGA.event({
       category: "Highlights Card",
-      action: "Card Clicked",
+      action: "Card Clicked HighlightSection",
       label: title,
     });
 

@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
 import EnquiryFormModal from "./EnquiryFormModal";
+import ReactGA from "react-ga4"; // ✅ Import GA4
 
 interface Milestone {
   year: string;
@@ -27,9 +28,16 @@ const milestones: Milestone[] = [
 const AboutSection: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleCardClick = () => {
-    setIsModalOpen(true);
-  };
+  // ✅ Updated to include GA event
+    const handleCardClick = (title: string) => {
+      ReactGA.event({
+        category: "Highlights Card",
+        action: "Card Clicked AboutSection",
+        label: title,
+      });
+  
+      setIsModalOpen(true);
+    };
 
   const handleModalClose = () => {
     setIsModalOpen(false);
@@ -83,7 +91,7 @@ const AboutSection: React.FC = () => {
             {milestones.map((milestone, index) => (
               <Card
                 key={index}
-                onClick={handleCardClick}
+                onClick={() => handleCardClick(milestone.title)}
                 className="bg-card border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
               >
                 <CardContent className="p-6 text-center">

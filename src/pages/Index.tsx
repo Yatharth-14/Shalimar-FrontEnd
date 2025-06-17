@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
@@ -15,20 +15,11 @@ import { ReraInfoCard } from "@/components/ReraInfoCard";
 import { LocationAdvantages } from "@/components/LocationAdvantages";
 
 const Index = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
-  const heroImages = [
-    "../lovable-uploads/Hero-Carousel-4.png",
-    "../lovable-uploads/Hero Carousel 2.png",
-    "../lovable-uploads/Hero Carousel 3.png",
-  ];
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [heroImages.length]);
+  const heroMedia = {
+    src: "../lovable-uploads/ShalimarWalkThrough.mp4",
+    type: 'video' as const,
+  };
 
   const handleFormSubmission = () => {
     setIsFormSubmitted(true);
@@ -38,11 +29,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Header isFormSubmitted={isFormSubmitted} />
       <ReraInfoCard />
-      <HeroSection
-        currentSlide={currentSlide}
-        setCurrentSlide={setCurrentSlide}
-        heroImages={heroImages}
-      />
+      <HeroSection heroMedia={heroMedia} />
       <HighlightsSection />
       <AboutSection />
       <AmenitiesSection />

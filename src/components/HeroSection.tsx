@@ -1,48 +1,53 @@
 import { Button } from "@/components/ui/button";
 
 interface HeroSectionProps {
-  currentSlide: number;
-  setCurrentSlide: (index: number) => void;
-  heroImages: string[];
+  heroMedia: { src: string; type: 'video' };
 }
 
-const HeroSection = ({
-  currentSlide,
-  setCurrentSlide,
-  heroImages,
-}: HeroSectionProps) => {
+const HeroSection = ({ heroMedia }: HeroSectionProps) => {
   return (
     <section
       id="home"
       className="relative w-full h-[300px] lg:h-[1000px] md:h-[500px] sm:h-[300px] overflow-hidden flex items-center justify-center"
     >
-      {/* Background Images */}
+      {/* Background Video */}
       <div className="absolute inset-0 w-full h-full">
-        {heroImages.map((image, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${
-              index === currentSlide ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <img
-              src={image}
-              alt={`Shalimar One World ${index + 1}`}
-              className="w-full h-full object-cover object-center"
-            />
-          </div>
-        ))}
+        <video
+          src={heroMedia.src}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover object-center"
+        />
       </div>
 
       {/* Overlay Content */}
       <div className="absolute inset-0 bg-black/40 flex items-center justify-center px-4">
         <div className="text-center text-white max-w-4xl">
+          {/* Logo and Price Row */}
+          <div className="flex flex-col sm:flex-row items-center justify-center mb-4 sm:mb-6 gap-3 animate-fade-in">
+            <img
+              src="../lovable-uploads/marbella-logo.png"
+              alt="Shalimar Logo"
+              className="w-[150px] sm:w-[200px] md:w-[250px] lg:w-[300px] h-auto object-contain brightness-200"
+            />
+            <span className="text-[#FFD700] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold px-4 py-1 border-2 border-[#FFD700] rounded-lg animate-pulse shadow-lg sm:mt-20">
+              Starting 1.15 Cr
+            </span>
+          </div>
+
+          {/* Heading */}
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6 animate-fade-in">
             Welcome to Shalimar Marbella
           </h1>
+
+          {/* Subheading */}
           <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 animate-fade-in">
             Discover Luxury Living in Lucknow
           </p>
+
+          {/* CTA Button */}
           <Button
             onClick={() =>
               document
@@ -54,19 +59,6 @@ const HeroSection = ({
             Explore Now
           </Button>
         </div>
-      </div>
-
-      {/* Dots Navigation */}
-      <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
-        {heroImages.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === currentSlide ? "bg-[#D4A017]" : "bg-white/50"
-            }`}
-          />
-        ))}
       </div>
     </section>
   );

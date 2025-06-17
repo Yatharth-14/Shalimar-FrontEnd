@@ -1,16 +1,7 @@
-import { useEffect, useState } from "react";
+import React from "react";
 
-// Define the props for the component (only apiKey is needed now)
-interface LocationAdvantagesProps {
-  apiKey: string; // Google Maps API Key
-}
-
-export const LocationAdvantages = ({ apiKey }: LocationAdvantagesProps) => {
-  const [mapError, setMapError] = useState<string | null>(null);
-
+export const LocationAdvantages = () => {
   // Hardcoded data for Shalimar Marbella
-  const lat = 26.9124; // Approximate coordinates for Gomti Nagar, Lucknow
-  const lng = 80.9431;
   const locationName = "Shalimar Marbella";
   const address = "GH18, Gomti Nagar, Badhamau, Lucknow, Uttar Pradesh 226001";
   const rating = 5.0;
@@ -28,56 +19,6 @@ export const LocationAdvantages = ({ apiKey }: LocationAdvantagesProps) => {
     { name: "LUCKNOW JUNCTION", distance: "14 KM" },
   ];
 
-  // Load Google Maps script and initialize the map
-  useEffect(() => {
-    const loadGoogleMaps = () => {
-      if (window.google && window.google.maps) {
-        initMap();
-        return;
-      }
-
-      const script = document.createElement("script");
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places`;
-      script.async = true;
-      script.onload = () => {
-        if (window.google && window.google.maps) {
-          initMap();
-        } else {
-          setMapError("Failed to load Google Maps API. Please check your API key.");
-        }
-      };
-      script.onerror = () => {
-        setMapError("Error loading Google Maps API. Please check your network or API key.");
-      };
-      document.body.appendChild(script);
-    };
-
-    const initMap = () => {
-      const map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
-        center: { lat, lng },
-        zoom: 14,
-        mapTypeControl: false,
-        streetViewControl: false,
-        fullscreenControl: true,
-      });
-
-      new google.maps.Marker({
-        position: { lat, lng },
-        map,
-        title: locationName,
-      });
-    };
-
-    loadGoogleMaps();
-
-    return () => {
-      const script = document.querySelector(`script[src^="https://maps.googleapis.com/maps/api/js"]`);
-      if (script) {
-        document.body.removeChild(script);
-      }
-    };
-  }, [apiKey]);
-
   // Function to render stars based on rating
   const renderStars = (rating: number) => {
     const stars = [];
@@ -93,17 +34,24 @@ export const LocationAdvantages = ({ apiKey }: LocationAdvantagesProps) => {
 
   return (
     <section id="amenities" className="py-20 px-4 bg-[#F5E6CC] dark:bg-[#2A2520]">
-    <div className="w-full max-w-5xl mx-auto p-4">
-      <h2 className="text-4xl md:text-5xl font-bold text-[#1A3C34] dark:text-[#D4A017] mb-4 text-center">Location Advantages</h2>
-      {mapError ? (
-        <div className="text-red-500 p-4 bg-red-100 rounded-lg">
-          {mapError}
-        </div>
-      ) : (
+      <div className="w-full max-w-5xl mx-auto p-4">
+        <h2 className="text-4xl md:text-5xl font-bold text-[#1A3C34] dark:text-[#D4A017] mb-4 text-center">
+          Location Advantages
+        </h2>
         <div className="flex flex-col md:flex-row gap-4">
-          {/* Map Section */}
+          {/* Image Section */}
           <div className="w-full md:w-2/3 h-96 relative">
-            <div id="map" className="w-full h-full rounded-lg shadow-md"></div>
+            <a
+              href="https://www.google.com/maps/place/Shalimar+Marbella/@26.8292447,81.0177878,15z/data=!4m6!3m5!1s0x399be3eb5e4af5d7:0x5ea1adbb18d4ee2a!8m2!3d26.8300206!4d81.026344!16s%2Fg%2F11w3cjhqm4?entry=ttu&g_ep=EgoyMDI1MDYxMS4wIKXMDSoASAFQAw%3D%3D"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="../lovable-uploads/GoogleMap.png" // Replace with actual image URL
+                alt="Shalimar Marbella Location Map"
+                className="w-full h-full object-cover rounded-2xl shadow-md transition-transform duration-500 ease-in-out hover:scale-105"
+              />
+            </a>
             {/* Location Card Overlay */}
             <div className="absolute top-4 left-4 bg-white p-4 rounded-lg shadow-lg max-w-xs">
               <h3 className="text-lg font-semibold text-gray-800">{locationName}</h3>
@@ -115,20 +63,11 @@ export const LocationAdvantages = ({ apiKey }: LocationAdvantagesProps) => {
               <p className="text-sm text-blue-500 mt-1">
                 {reviews} review{reviews !== 1 ? "s" : ""}
               </p>
-              <a
-                href={`https://www.google.com/maps/search/?api=1&query=${lat},${lng}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-500 text-sm hover:underline"
-              >
-                View on map
-              </a>
             </div>
           </div>
 
           {/* Location Advantages List */}
-          
-          <div className="bg-yellow-600 text-white p-6 rounded-lg shadow-md">
+          <div className="bg-yellow-600 text-white p-4 rounded-lg shadow-md">
             <ul className="space-y-4">
               {advantages.map((advantage, index) => (
                 <li key={index} className="flex items-center">
@@ -141,9 +80,7 @@ export const LocationAdvantages = ({ apiKey }: LocationAdvantagesProps) => {
             </ul>
           </div>
         </div>
-      )}
-    </div>
+      </div>
     </section>
   );
 };
-

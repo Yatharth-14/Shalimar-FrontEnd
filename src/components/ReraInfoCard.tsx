@@ -2,7 +2,7 @@ import React from "react";
 
 export const ReraInfoCard = () => {
   return (
-    <div className="bg-white text-gray-800 py-4 px-6 rounded-lg shadow-lg flex flex-col md:flex-row items-center justify-between">
+    <div className="bg-white text-gray-800 py-4 px-6 rounded-lg shadow-lg flex flex-col md:flex-row items-center justify-between ">
       {/* Left Section - QR Code */}
       <div className="mb-4 md:mb-0">
         <img
@@ -14,10 +14,10 @@ export const ReraInfoCard = () => {
 
       {/* Right Section - Information */}
       <div className="text-center md:text-right">
-        <h2 className="text-xl font-semibold mb-1">Landmark Realtors</h2>
+        <h2 className="text-xl font-semibold mb-1">Pulkit Sethi</h2>
         <p className="text-sm text-gray-600">Authorised Channel Partner</p>
         <p className="text-sm">
-          Rera No: <span className="font-medium">UPRERAAGT11383</span>
+          Rera No: <span className="font-medium">UPRERAAGT25269</span>
         </p>
         <p className="text-sm">
           Project Rera No:{" "}

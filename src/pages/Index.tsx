@@ -36,8 +36,8 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <ReraInfoCard />
       <Header isFormSubmitted={isFormSubmitted} />
+      <ReraInfoCard />
       <HeroSection
         currentSlide={currentSlide}
         setCurrentSlide={setCurrentSlide}
@@ -49,7 +49,7 @@ const Index = () => {
       <GallerySection />
       <FloorPlansSection />
       <FormComponent onFormSubmit={handleFormSubmission} />
-      <LocationAdvantages apiKey="AIzaSyB8e8zb64Gb_iaesoxpAO0eL_ZBqsrubt4" />
+      <LocationAdvantages />
       <CallToActionSection />
       <Footer />
       <WhatsAppButton />

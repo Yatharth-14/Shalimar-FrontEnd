@@ -91,6 +91,12 @@ export const Header = ({ isFormSubmitted }) => {
               onClick={() => scrollToSection("contact")}
               className="bg-[#D4A017] hover:bg-[#B8901A] text-white px-6 py-2 font-semibold transition-all duration-300 hover:scale-105"
             >
+              +91 8010702010
+            </Button>
+            <Button
+              onClick={() => scrollToSection("contact")}
+              className="bg-[#D4A017] hover:bg-[#B8901A] text-white px-6 py-2 font-semibold transition-all duration-300 hover:scale-105"
+            >
               Enquire Now
             </Button>
           </div>

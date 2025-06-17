@@ -26,19 +26,19 @@ const HeroSection = ({ heroMedia }: HeroSectionProps) => {
       <div className="absolute inset-0 bg-black/40 flex items-center justify-center px-4">
         <div className="text-center text-white max-w-4xl">
           {/* Logo and Price Row */}
-          <div className="flex flex-col sm:flex-row items-center justify-center mb-4 sm:mb-6 gap-3 animate-fade-in">
+          <div className="flex flex-col sm:flex-row  items-center justify-center mb-4 mt-5 sm:mb-6 gap-3 animate-fade-in">
             <img
               src="../lovable-uploads/marbella-logo.png"
               alt="Shalimar Logo"
-              className="w-[150px] sm:w-[200px] md:w-[250px] lg:w-[300px] h-auto object-contain brightness-200"
+              className="w-[80px] sm:w-[100px] md:w-[200px] lg:w-[300px] h-auto object-contain brightness-200"
             />
-            <span className="text-[#FFD700] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold px-4 py-1 border-2 border-[#FFD700] rounded-lg animate-pulse shadow-lg sm:mt-20">
+            <span className="text-[#FFD700] sm:text-xl md:text-3xl lg:text-4xl font-extrabold px-4 py-1 border-2 border-[#FFD700] rounded-lg animate-pulse shadow-lg">
               Starting 1.15 Cr
             </span>
           </div>
 
           {/* Heading */}
-          <h1 className="text-white text-4xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6 animate-fade-in">
+          <h1 className="text-white text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 animate-fade-in">
             Welcome to Shalimar Marbella
           </h1>
 

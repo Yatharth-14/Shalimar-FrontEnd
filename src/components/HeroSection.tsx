@@ -38,7 +38,7 @@ const HeroSection = ({ heroMedia }: HeroSectionProps) => {
           </div>
 
           {/* Heading */}
-          <h1 className="text-white text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 animate-fade-in">
+          <h1 className="text-white text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 sm:mb-4 animate-fade-in">
             Welcome to Shalimar Marbella
           </h1>
 
@@ -54,7 +54,7 @@ const HeroSection = ({ heroMedia }: HeroSectionProps) => {
                 .getElementById("about")
                 ?.scrollIntoView({ behavior: "smooth" })
             }
-            className="bg-[#D4A017] hover:bg-[#B8901A] text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold transition-all duration-300 hover:scale-105"
+            className="bg-[#D4A017] hover:bg-[#B8901A] text-white -mt-6 mb-4 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold transition-all duration-300 hover:scale-105"
           >
             Explore Now
           </Button>

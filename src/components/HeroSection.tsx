@@ -38,12 +38,12 @@ const HeroSection = ({ heroMedia }: HeroSectionProps) => {
           </div>
 
           {/* Heading */}
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6 animate-fade-in">
+          <h1 className="text-white text-4xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6 animate-fade-in">
             Welcome to Shalimar Marbella
           </h1>
 
           {/* Subheading */}
-          <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 animate-fade-in">
+          <p className="text-white text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 animate-fade-in">
             Discover Luxury Living in Lucknow
           </p>
 

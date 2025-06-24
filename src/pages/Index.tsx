@@ -27,8 +27,8 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header isFormSubmitted={isFormSubmitted} />
       <ReraInfoCard />
+      <Header isFormSubmitted={isFormSubmitted} />
       <HeroSection heroMedia={heroMedia} />
       <HighlightsSection />
       <AboutSection />

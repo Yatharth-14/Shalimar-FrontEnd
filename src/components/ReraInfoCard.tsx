@@ -13,7 +13,7 @@ export const ReraInfoCard = () => {
       </div>
 
       {/* Right Section - Information and Logo */}
-      <div className="flex flex-col md:flex-row items-center md:items-end gap-4 text-center md:text-right">
+      <div className="flex flex-col md:flex-row items-center md:items-end gap-4 text-center md:text-left">
         {/* Information */}
         <div>
           <h2 className="text-xl font-semibold mb-1">Pulkit Sethi</h2>

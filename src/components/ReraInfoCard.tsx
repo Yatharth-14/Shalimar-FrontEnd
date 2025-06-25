@@ -6,9 +6,9 @@ export const ReraInfoCard = () => {
       {/* Left Section - QR Code */}
       <div className="mb-4 md:mb-0">
         <img
-          src="/lovable-uploads/RERA Scanner.jpg"
-          alt="QR Code"
-          className="w-28 h-28 border-2 border-gray-300 rounded-md shadow-sm"
+          src="/lovable-uploads/EternalHousingLogo-Photoroom.png"
+          alt="Shalimar Logo"
+          className="w-28 h-28  shadow-sm"
         />
       </div>
 
@@ -37,8 +37,8 @@ export const ReraInfoCard = () => {
 
         {/* Logo */}
         <img
-          src="/lovable-uploads/EternalHousingLogo-Photoroom.png"
-          alt="Shalimar Logo"
+          src="/lovable-uploads/RERA Scanner.jpg"
+          alt="QR Code"
           className="w-28 h-28 border-2 border-gray-300 rounded-md shadow-sm"
         />
       </div>

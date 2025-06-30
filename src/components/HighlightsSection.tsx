@@ -3,8 +3,8 @@ import { Building2, MapPin, Users } from "lucide-react";
 import { LucideIcon } from "lucide-react";
 import { useState } from "react";
 import EnquiryFormModal from "./EnquiryFormModal";
-import ReactGA from "react-ga4"; // ✅ Import GA4
-
+import { trackEvent } from "@/utils/analytics";
+import React from "react";
 interface Highlight {
   icon: LucideIcon;
   title: string;
@@ -34,15 +34,12 @@ const highlights: Highlight[] = [
 
 const HighlightsSection: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // ✅ Updated to include GA event
   const handleCardClick = (title: string) => {
-    ReactGA.event({
+    trackEvent({
       category: "Highlights Card",
       action: "Card Clicked HighlightSection",
       label: title,
     });
-
     setIsModalOpen(true);
   };
 

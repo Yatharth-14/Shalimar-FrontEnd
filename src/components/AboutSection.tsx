@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
 import EnquiryFormModal from "./EnquiryFormModal";
-import ReactGA from "react-ga4"; // ✅ Import GA4
+import { trackEvent } from "@/utils/analytics";
 
 interface Milestone {
   year: string;
@@ -29,15 +29,14 @@ const AboutSection: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // ✅ Updated to include GA event
-    const handleCardClick = (title: string) => {
-      ReactGA.event({
-        category: "Highlights Card",
-        action: "Card Clicked AboutSection",
-        label: title,
-      });
-  
-      setIsModalOpen(true);
-    };
+  const handleCardClick = (title: string) => {
+    trackEvent({
+      category: "AboutSection Card",
+      action: "Card Clicked AboutSection",
+      label: title,
+    });
+    setIsModalOpen(true);
+  };
 
   const handleModalClose = () => {
     setIsModalOpen(false);

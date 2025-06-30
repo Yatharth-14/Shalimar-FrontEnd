@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Waves, Dumbbell, Car, Shield, TreePine, Building } from "lucide-react";
 import EnquiryFormModal from "../components/EnquiryFormModal";
 
+
 const amenities = [
   { icon: Waves, title: "Swimming Pool", description: "Olympic-size swimming pool with kids' area" },
   { icon: Dumbbell, title: "Gymnasium", description: "Fully equipped modern fitness center" },

@@ -8,8 +8,31 @@ export const ReraInfoCard = () => {
         <img
           src="/lovable-uploads/EternalHousingLogo-Photoroom.png"
           alt="Shalimar Logo"
-          className="w-28 h-28  shadow-sm"
+          className="w-28 h-28 shadow-sm"
         />
+      </div>
+
+      {/* Middle Section 1 - Bank Account Details */}
+      <div className="flex flex-col items-center md:items-start gap-2 text-center md:text-left mb-4 md:mb-0">
+        <h3 className="text-lg font-semibold">Bank Account Details</h3>
+        <p className="text-sm text-gray-600">
+          Name of the Account: ANSDPL - COLL A/c- MARBELLA GH 18
+        </p>
+        <p className="text-sm text-gray-600">Account Number: 42952561777</p>
+        <p className="text-sm text-gray-600">Bank Name: State Bank of India</p>
+        <p className="text-sm text-gray-600">Branch Name: Commercial Branch</p>
+      </div>
+
+      {/* Middle Section 2 - Branch Details */}
+      <div className="flex flex-col items-center md:items-start gap-2 text-center md:text-left mb-4 md:mb-0">
+        <h3 className="text-lg font-semibold">Branch Details</h3>
+        <p className="text-sm text-gray-600">
+          Branch Address: 6A, Way Road, Gokhle Marg, Lucknow, Uttar Pradesh 226001
+        </p>
+        <p className="text-sm text-gray-600">Branch State: Uttar Pradesh</p>
+        <p className="text-sm text-gray-600">Branch District: Lucknow</p>
+        <p className="text-sm text-gray-600">IFSC Code: SBIN0004166</p>
+        <p className="text-sm text-gray-600">Branch Email Address: sbi.04166@sbi.co.in</p>
       </div>
 
       {/* Right Section - Information and Logo */}

@@ -8,6 +8,7 @@ import EnquiryFormModal from "../components/EnquiryFormModal";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import { trackEvent } from "@/utils/analytics";
 
 const galleryImages = [
   "../lovable-uploads/Project-Gallery-1.png",
@@ -22,6 +23,11 @@ const GallerySection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleImageClick = (src: string, index: number) => {
+    trackEvent({
+      category: "GallerySection Image",
+      action: "Image Clicked GallerySection",
+      label: `Image ${index + 1}`,
+    });
     setIsModalOpen(true);
   };
 
@@ -80,7 +86,12 @@ const GallerySection = () => {
           </Swiper>
         </div>
       </section>
-      {isModalOpen && <EnquiryFormModal onClose={handleModalClose} title="Enquire About Shalimar Marbella" />}
+      {isModalOpen && (
+        <EnquiryFormModal
+          onClose={handleModalClose}
+          title="Enquire About Shalimar Marbella"
+        />
+      )}
     </>
   );
 };

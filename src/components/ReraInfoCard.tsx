@@ -2,69 +2,101 @@ import React from "react";
 
 export const ReraInfoCard = () => {
   return (
-    <div className="bg-white text-gray-800 py-4 px-6 rounded-lg shadow-lg flex flex-col md:flex-row items-center justify-between">
-      {/* Left Section - QR Code */}
-      <div className="mb-4 md:mb-0">
-        <img
-          src="/lovable-uploads/EternalHousingLogo-Photoroom.png"
-          alt="Shalimar Logo"
-          className="w-28 h-28 shadow-sm"
-        />
-      </div>
-
-      {/* Middle Section 1 - Bank Account Details */}
-      <div className="flex flex-col items-center md:items-start gap-2 text-center md:text-left mb-4 md:mb-0">
-        <h3 className="text-lg font-semibold">Bank Account Details</h3>
-        <p className="text-sm text-gray-600">
-          Name of the Account: ANSDPL - COLL A/c- MARBELLA GH 18
-        </p>
-        <p className="text-sm text-gray-600">Account Number: 42952561777</p>
-        <p className="text-sm text-gray-600">Bank Name: State Bank of India</p>
-        <p className="text-sm text-gray-600">Branch Name: Commercial Branch</p>
-      </div>
-
-      {/* Middle Section 2 - Branch Details */}
-      <div className="flex flex-col items-center md:items-start gap-2 text-center md:text-left mb-4 md:mb-0">
-        <h3 className="text-lg font-semibold">Branch Details</h3>
-        <p className="text-sm text-gray-600">
-          Branch Address: 6A, Way Road, Gokhle Marg, Lucknow, Uttar Pradesh 226001
-        </p>
-        <p className="text-sm text-gray-600">Branch State: Uttar Pradesh</p>
-        <p className="text-sm text-gray-600">Branch District: Lucknow</p>
-        <p className="text-sm text-gray-600">IFSC Code: SBIN0004166</p>
-        <p className="text-sm text-gray-600">Branch Email Address: sbi.04166@sbi.co.in</p>
-      </div>
-
-      {/* Right Section - Information and Logo */}
-      <div className="flex flex-col md:flex-row items-center md:items-end gap-4 text-center md:text-left">
-        {/* Information */}
-        <div>
-          <h2 className="text-xl font-semibold mb-1">Pulkit Sethi</h2>
-          <p className="text-sm text-gray-600">Authorised Channel Partner</p>
-          <p className="text-sm">
-            Rera No: <span className="font-medium">UPRERAAGT25269</span>
-          </p>
-          <p className="text-sm">
-            Project Rera No:{" "}
-            <span className="font-medium">UPRERAPRJ460592/05/2024</span>
-          </p>
-          <a
-            href="https://www.up-rera.in"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-blue-600 hover:text-blue-800 underline transition-colors"
-          >
-            Rera Website: www.up-rera.in
-          </a>
+    <div className="bg-gradient-to-br from-white to-gray-50 text-gray-800 p-6 rounded-xl shadow-lg border border-gray-100 flex flex-col gap-6 transition-all duration-300 hover:shadow-xl">
+      {/* Header with Logos and Bank Details */}
+      <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+        {/* Left Logo with subtle shine effect */}
+        <div className="p-2 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow">
+          <img
+            src="/lovable-uploads/EternalHousingLogo-Photoroom.png"
+            alt="Shalimar Logo"
+            className="w-28 h-28 object-contain"
+          />
         </div>
 
-        {/* Logo */}
-        <img
-          src="/lovable-uploads/RERA Scanner.jpg"
-          alt="QR Code"
-          className="w-28 h-28 border-2 border-gray-300 rounded-md shadow-sm"
-        />
+        {/* Bank Details in elegant card */}
+        <div className="flex-1">
+          <div className="bg-white/80 backdrop-blur-sm p-4 rounded-lg border border-gray-200 shadow-sm">
+            <h3 className="text-lg font-semibold text-center text-gray-700 pb-2 mb-3 border-b border-gray-200 relative">
+              <span className="absolute left-0 bottom-0 h-0.5 w-1/3 bg-blue-500"></span>
+              <span className="absolute left-1/3 bottom-0 h-0.5 w-1/3 bg-green-500"></span>
+              <span className="absolute right-0 bottom-0 h-0.5 w-1/3 bg-orange-500"></span>
+              Bank Account Details
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+              <div className="space-y-1">
+                <p className="font-medium text-gray-600">Account Name:</p>
+                <p className="text-gray-700">ANSDPL - COLL A/c- MARBELLA GH 18</p>
+              </div>
+              <div className="space-y-1">
+                <p className="font-medium text-gray-600">Account Number:</p>
+                <p className="text-gray-700">42952561777</p>
+              </div>
+              <div className="space-y-1">
+                <p className="font-medium text-gray-600">Bank Name:</p>
+                <p className="text-gray-700">State Bank of India</p>
+              </div>
+              <div className="space-y-1">
+                <p className="font-medium text-gray-600">Branch Name:</p>
+                <p className="text-gray-700">Commercial Branch</p>
+              </div>
+              <div className="space-y-1 md:col-span-2">
+                <p className="font-medium text-gray-600">Branch Address:</p>
+                <p className="text-gray-700">6A, Way Road, Gokhle Marg, Lucknow, Uttar Pradesh 226001</p>
+              </div>
+              <div className="space-y-1">
+                <p className="font-medium text-gray-600">IFSC Code:</p>
+                <p className="text-gray-700 font-mono">SBIN0004166</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Logo with QR Code */}
+        <div className="p-2 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow">
+          <img
+            src="/lovable-uploads/RERA Scanner.jpg"
+            alt="QR Code"
+            className="w-28 h-28 border-2 border-gray-200 rounded-md object-contain"
+          />
+        </div>
       </div>
+
+      {/* RERA Information Section */}
+      <div className="bg-blue-50/50 rounded-lg p-4 border border-blue-100">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="text-center md:text-left">
+            <h2 className="text-xl font-semibold text-gray-800 bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+              Pulkit Sethi
+            </h2>
+            <p className="text-sm text-gray-600 mt-1">Authorised Channel Partner</p>
+          </div>
+
+          <div className="text-center md:text-left space-y-1">
+            <p className="text-sm">
+              <span className="font-medium text-gray-600">Rera No:</span>{" "}
+              <span className="font-medium text-blue-700">UPRERAAGT25269</span>
+            </p>
+            <p className="text-sm">
+              <span className="font-medium text-gray-600">Project Rera No:</span>{" "}
+              <span className="font-medium text-blue-700">UPRERAPRJ460592/05/2024</span>
+            </p>
+            <a
+              href="https://www.up-rera.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block text-sm text-blue-600 hover:text-blue-800 underline transition-colors mt-1"
+            >
+              Rera Website: www.up-rera.in
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Official Stamp/Signature Area (optional) */}
+      {/* <div className="text-center text-xs text-gray-500 mt-2 border-t border-gray-200 pt-3">
+        <p>This is an official document - For verification purposes only</p>
+      </div> */}
     </div>
   );
 };

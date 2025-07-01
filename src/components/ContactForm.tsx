@@ -3,20 +3,31 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { trackEvent } from "@/utils/analytics";
 
 interface ContactFormProps {
   formData: { Name: string; Email: string; Phone: string; Message: string };
   errors: { name: string; email: string; phone: string; message: string };
   isSubmitting: boolean;
-  handleInputChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  handleInputChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
   handleFormSubmit: (e: React.FormEvent) => void;
 }
 
-const ContactForm = ({ formData, errors, isSubmitting, handleInputChange, handleFormSubmit }: ContactFormProps) => {
+const ContactForm = ({
+  formData,
+  errors,
+  isSubmitting,
+  handleInputChange,
+  handleFormSubmit,
+}: ContactFormProps) => {
   return (
     <Card className="bg-card border-none shadow-lg">
       <CardContent className="p-8">
-        <h3 className="text-2xl font-bold text-[#1A3C34] dark:text-[#D4A017] mb-6">Send us a Message</h3>
+        <h3 className="text-2xl font-bold text-[#1A3C34] dark:text-[#D4A017] mb-6">
+          Send us a Message
+        </h3>
         <form onSubmit={handleFormSubmit} className="space-y-6">
           <div>
             <Label htmlFor="name">Full Name</Label>
@@ -28,7 +39,9 @@ const ContactForm = ({ formData, errors, isSubmitting, handleInputChange, handle
               required
               className="mt-1"
             />
-            {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+            {errors.name && (
+              <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+            )}
           </div>
           <div>
             <Label htmlFor="email">Email Address</Label>
@@ -41,7 +54,9 @@ const ContactForm = ({ formData, errors, isSubmitting, handleInputChange, handle
               required
               className="mt-1"
             />
-            {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+            )}
           </div>
           <div>
             <Label htmlFor="phone">Phone Number</Label>
@@ -54,7 +69,9 @@ const ContactForm = ({ formData, errors, isSubmitting, handleInputChange, handle
               required
               className="mt-1"
             />
-            {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
+            {errors.phone && (
+              <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+            )}
           </div>
           <div>
             <Label htmlFor="message">Message</Label>
@@ -66,10 +83,16 @@ const ContactForm = ({ formData, errors, isSubmitting, handleInputChange, handle
               rows={4}
               className="mt-1"
             />
-            {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
+            {errors.message && (
+              <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+            )}
           </div>
-          <Button type="submit" className="w-full bg-[#D4A017] hover:bg-[#B8901A] text-white font-semibold py-3" disabled={isSubmitting}>
-            {isSubmitting ? 'Sending...' : 'Send Enquiry'}
+          <Button
+            type="submit"
+            className="w-full bg-[#D4A017] hover:bg-[#B8901A] text-white font-semibold py-3"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Sending..." : "Send Enquiry"}
           </Button>
         </form>
       </CardContent>

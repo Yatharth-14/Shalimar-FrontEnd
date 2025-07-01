@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import ContactSection from "@/components/ContactSection";
+import { trackEvent } from "@/utils/analytics";
 
 interface FormComponentProps {
   onFormSubmit: () => void;
@@ -12,7 +13,7 @@ const FormComponent = ({ onFormSubmit }: FormComponentProps) => {
     Name: "",
     Email: "",
     Phone: "",
-    Message: ""
+    Message: "",
   });
   const [errors, setErrors] = useState({
     name: "",
@@ -59,7 +60,8 @@ const FormComponent = ({ onFormSubmit }: FormComponentProps) => {
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const url = "https://script.google.com/macros/s/AKfycbzfD5ifoutIgboynAYIuNoYzJGWKWtK3IeveyP5blZtVBzRE13nVMLJ6QLgLsQl6cKO/exec";
+    const url =
+      "https://script.google.com/macros/s/AKfycbzfD5ifoutIgboynAYIuNoYzJGWKWtK3IeveyP5blZtVBzRE13nVMLJ6QLgLsQl6cKO/exec";
 
     if (!validateForm()) {
       toast({
@@ -72,6 +74,13 @@ const FormComponent = ({ onFormSubmit }: FormComponentProps) => {
     }
 
     setIsSubmitting(true);
+
+    // Google Analytics Event
+    trackEvent({
+      category: "Contact Form",
+      action: "Submit Contact Form",
+      label: formData.Name,
+    });
 
     try {
       const formBody = new URLSearchParams({
@@ -96,7 +105,8 @@ const FormComponent = ({ onFormSubmit }: FormComponentProps) => {
       if (response.ok && result.status === "success") {
         toast({
           title: "Sent Successfully!",
-          description: "Thank you for reaching out. We'll contact you within 24 hours.",
+          description:
+            "Thank you for reaching out. We'll contact you within 24 hours.",
           className: "bg-[#1A3C34] text-white border-[#D4A017]",
           duration: 5000,
         });
@@ -112,7 +122,10 @@ const FormComponent = ({ onFormSubmit }: FormComponentProps) => {
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      const errorMessage = error instanceof Error ? error.message : "Something went wrong. Please try again.";
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please try again.";
       toast({
         title: "Submission Failed",
         description: errorMessage,
@@ -124,10 +137,12 @@ const FormComponent = ({ onFormSubmit }: FormComponentProps) => {
     }
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Download } from "lucide-react";
 import FormModal from "@/components/FormModal";
+import { trackEvent } from "@/utils/analytics";
 
 interface FloorPlan {
   title: string;
@@ -49,7 +50,12 @@ const FloorPlansSection: React.FC = () => {
     }
   };
 
-  const handleDownloadClick = (plan: FloorPlan) => {
+  const handleDownloadClick = (plan: FloorPlan,title: string) => {
+    trackEvent({
+      category: "FloorSection Card",
+      action: "Card clicked FloorSection",
+      label: title,
+    })
     setSelectedPlan(plan);
     setIsModalOpen(true);
   };
@@ -103,7 +109,7 @@ const FloorPlansSection: React.FC = () => {
                     className="mt-2 w-full"
                     onClick={(e) => {
                       e.stopPropagation(); // Prevent card click from triggering
-                      handleDownloadClick(plan);
+                      handleDownloadClick(plan, plan.title);
                     }}
                   >
                     <Download className="mr-2 h-4 w-4" /> Download
